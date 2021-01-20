@@ -12,13 +12,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    TextView selectedTerminalCount;
-    TextView selectedGasolineType;
-    TextView selectedGasolineValue;
+    TextView textView_selectedTerminalCount;
+    TextView textView_selectedGasolineType;
     GridView gridViewTerminalCount;
     FillingStation fillingStation;
     ArrayList<String> spinnerArray;
     BottomNavigationView navigationView;
+    Order order;
+    int maxGazolineValue = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,43 +27,47 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         fillingStation = new FillingStation();
+        order = new Order();
 
         gridViewTerminalCount = (GridView) findViewById(R.id.gridViewTerminalCount);
         GridViewTerminalCountsAdapter terminalCountAdapter = new GridViewTerminalCountsAdapter(getApplicationContext(), fillingStation.getTerminalCounts());
         gridViewTerminalCount.setAdapter(terminalCountAdapter);
-        selectedTerminalCount = (TextView) findViewById(R.id.selectedTerminalCount);
+        textView_selectedTerminalCount = (TextView) findViewById(R.id.selectedTerminalCount);
         gridViewTerminalCount.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedTerminalCount.setText(fillingStation.getTerminalCount(position));
+                textView_selectedTerminalCount.setText(fillingStation.getTerminalCount(position));
+                order.setTerminalCount(fillingStation.getTerminalCount(position));
             }
         });
 
         GridView gridViewGazilineType = (GridView) findViewById(R.id.gridViewGazolineType);
         GridViewGazolineTypesAdapter gazolineTypeAdapter = new GridViewGazolineTypesAdapter(getApplicationContext(), fillingStation.getGazolineTypes());
         gridViewGazilineType.setAdapter(gazolineTypeAdapter);
-        selectedGasolineType = (TextView) findViewById(R.id.selectedGasolineType);
+        textView_selectedGasolineType = (TextView) findViewById(R.id.selectedGasolineType);
         gridViewGazilineType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedGasolineType.setText(fillingStation.getGazolineType(position).getName());
+                textView_selectedGasolineType.setText(fillingStation.getGazolineType(position).getName());
+                order.setGazolineType(fillingStation.getGazolineType(position).getName());
+                order.setStartPrice(fillingStation.getGazolineType(position).getPrice());
             }
         });
 
         Spinner spinner = findViewById(R.id.spinner);
         spinnerArray = new ArrayList<String>();
-        for (int j = 10; j < 100; j++) {
+        for (int j = 10; j < maxGazolineValue; j++) {
             spinnerArray.add(String.valueOf(j));
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        selectedGasolineValue = (TextView) findViewById(R.id.selectedGasolineValue);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent,
                                        View itemSelected, int selectedItemPosition, long selectedId) {
-                selectedGasolineValue.setText(spinnerArray.get(selectedItemPosition));
+                order.setGazolinaValue(selectedItemPosition);
             }
+
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });

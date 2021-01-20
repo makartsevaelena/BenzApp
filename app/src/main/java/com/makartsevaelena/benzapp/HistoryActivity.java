@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity {
-    ArrayList<Operation> operations;
+    ArrayList<Order> operations;
     RecyclerViewAdapter recyclerViewAdapter;
 
     @Override
@@ -20,7 +20,7 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        operations = new ArrayList<Operation>();
+        operations = new ArrayList<Order>();
         setData();
         recyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(), operations);
         recyclerView.setAdapter(recyclerViewAdapter);
@@ -52,10 +52,10 @@ public class HistoryActivity extends AppCompatActivity {
 
     }
     private void setData(){
-        operations.add(new Operation ("АИ-95","500 rub"));
-        operations.add(new Operation ("АИ-95","2000 rub"));
-        operations.add(new Operation ("АИ-95","1500 rub"));
-        operations.add(new Operation ("АИ-95","600 rub"));
+        operations.add(new Order("АИ-95","2",12,10));
+        operations.add(new Order("АИ-95","2",12,10));
+        operations.add(new Order("АИ-95","3",12,10));
+        operations.add(new Order("АИ-95","4",12,10));
     }
 }
 

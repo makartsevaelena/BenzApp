@@ -1,7 +1,6 @@
 package com.makartsevaelena.benzapp;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +13,11 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
-    private final ArrayList<Operation> operations;
+    private final ArrayList<Order> orders;
 
-    RecyclerViewAdapter(Context context, ArrayList<Operation> operations) {
-        this.operations = operations;
+    RecyclerViewAdapter(Context context, ArrayList<Order> orders) {
+        this.orders = orders;
         this.inflater = LayoutInflater.from(context);
-        notifyDataSetChanged();
     }
 
     @Override
@@ -30,24 +28,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Operation operation = operations.get(position);
-        holder.price.setText(operation.getPrice());
-        Log.d("myLOG",operation.getName());
-        holder.operation.setText(operation.getName());
+        Order order = orders.get(position);
+        holder.orderFinalPrice.setText(String.valueOf(order.getFinalPrice()));
+        holder.orderGazolineType.setText(order.getGazolineType());
+        holder.orderTerminalCount.setText(order.getTerminalCount());
+        holder.orderStartPrice.setText(String.valueOf(order.getStartPrice()));
+        holder.orderGazolineValue.setText(String.valueOf(order.getGazolinaValue()));
     }
 
     @Override
     public int getItemCount() {
-        return operations.size();
+        return orders.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView operation, price;
+        final TextView orderFinalPrice, orderGazolineValue, orderStartPrice, orderTerminalCount, orderGazolineType;
 
         ViewHolder(View view) {
             super(view);
-            operation = (TextView) view.findViewById(R.id.operation);
-            price = (TextView) view.findViewById(R.id.price);
+            orderGazolineType = (TextView) view.findViewById(R.id.order_gazolineType);
+            orderTerminalCount = (TextView) view.findViewById(R.id.order_terminalCount);
+            orderStartPrice = (TextView) view.findViewById(R.id.order_startPrice);
+            orderGazolineValue = (TextView) view.findViewById(R.id.order_gazolineValue);
+            orderFinalPrice = (TextView) view.findViewById(R.id.order_finalPrice);
         }
     }
 }

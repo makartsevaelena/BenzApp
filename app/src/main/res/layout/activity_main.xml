@@ -92,26 +92,20 @@
                     android:id="@+id/gasolineValue"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Объем топлива"
+                    android:layout_height="match_parent"
+                    android:text="Объем топлива:"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"/>
-            <TextView
-                    android:id="@+id/selectedGasolineValue"
-                    android:textSize="16sp"
+            <Spinner
+                    android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Сумма и объем топлива"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:layout_weight="1"/>
         </LinearLayout>
-        <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
+
     </LinearLayout>
 
     <Button
