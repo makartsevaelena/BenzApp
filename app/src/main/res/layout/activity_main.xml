@@ -35,15 +35,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Выберите номер колонки:"
-                    android:layout_weight="0.4"
-            />
+                    android:layout_weight="0.4"/>
             <TextView
-                    android:id="@+id/chooseTerminalCount"
+                    android:id="@+id/selectedTerminalCount"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-            />
+                    android:layout_weight="0.6"/>
 
         </LinearLayout>
 
@@ -67,15 +65,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Выберите тип топлива:"
-                    android:layout_weight="1"
-            />
+                    android:layout_weight="1"/>
             <TextView
-                    android:id="@+id/chooseGasolineType"
+                    android:id="@+id/selectedGasolineType"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-            />
+                    android:layout_weight="1"/>
         </LinearLayout>
 
         <GridView
@@ -85,17 +81,37 @@
                 android:numColumns="3"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
-
-        <TextView
-                android:id="@+id/gasolineValue"
-                android:textSize="16sp"
+        <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Сумма и объем топлива"
+                android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-        />
+                android:layout_marginBottom="10dp">
 
+            <TextView
+                    android:id="@+id/gasolineValue"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Объем топлива"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"/>
+            <TextView
+                    android:id="@+id/selectedGasolineValue"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Сумма и объем топлива"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"/>
+        </LinearLayout>
+        <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
     </LinearLayout>
 
     <Button

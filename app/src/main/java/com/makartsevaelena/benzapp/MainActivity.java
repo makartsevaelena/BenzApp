@@ -4,18 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
-    TextView chooseTerminalCount;
-    TextView chooseGasolineType;
+    TextView selectedTerminalCount;
+    TextView selectedGasolineType;
+    TextView selectedGasolineValue;
     GridView gridViewTerminalCount;
     FillingStation fillingStation;
+    ArrayList<String> spinnerArray;
     BottomNavigationView navigationView;
 
     @Override
@@ -28,22 +30,40 @@ public class MainActivity extends AppCompatActivity {
         gridViewTerminalCount = (GridView) findViewById(R.id.gridViewTerminalCount);
         GridViewTerminalCountsAdapter terminalCountAdapter = new GridViewTerminalCountsAdapter(getApplicationContext(), fillingStation.getTerminalCounts());
         gridViewTerminalCount.setAdapter(terminalCountAdapter);
-        chooseTerminalCount = (TextView) findViewById(R.id.chooseTerminalCount);
+        selectedTerminalCount = (TextView) findViewById(R.id.selectedTerminalCount);
         gridViewTerminalCount.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                chooseTerminalCount.setText(fillingStation.getTerminalCount(position));
+                selectedTerminalCount.setText(fillingStation.getTerminalCount(position));
             }
         });
 
         GridView gridViewGazilineType = (GridView) findViewById(R.id.gridViewGazolineType);
         GridViewGazolineTypesAdapter gazolineTypeAdapter = new GridViewGazolineTypesAdapter(getApplicationContext(), fillingStation.getGazolineTypes());
         gridViewGazilineType.setAdapter(gazolineTypeAdapter);
-        chooseGasolineType = (TextView) findViewById(R.id.chooseGasolineType);
+        selectedGasolineType = (TextView) findViewById(R.id.selectedGasolineType);
         gridViewGazilineType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                chooseGasolineType.setText(fillingStation.getGazolineType(position).getName());
+                selectedGasolineType.setText(fillingStation.getGazolineType(position).getName());
+            }
+        });
+
+        Spinner spinner = findViewById(R.id.spinner);
+        spinnerArray = new ArrayList<String>();
+        for (int j = 10; j < 100; j++) {
+            spinnerArray.add(String.valueOf(j));
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        selectedGasolineValue = (TextView) findViewById(R.id.selectedGasolineValue);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent,
+                                       View itemSelected, int selectedItemPosition, long selectedId) {
+                selectedGasolineValue.setText(spinnerArray.get(selectedItemPosition));
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
