@@ -23,36 +23,65 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-                android:id="@+id/titleTerminalCount"
-                android:textSize="16sp"
+        <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:text="Выберите номер колонки"
-        />
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="10dp">
+            <TextView
+                    android:id="@+id/titleTerminalCount"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Выберите номер колонки. Вы выбрали: "
+                    android:layout_weight="1"
+            />
+            <TextView
+                    android:id="@+id/chooseTerminalCount"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+            />
+
+        </LinearLayout>
+
         <GridView
                 android:id="@+id/gridViewTerminalCount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:verticalSpacing="20dp"
-                android:horizontalSpacing="20dp"
+                android:verticalSpacing="10dp"
+                android:horizontalSpacing="10dp"
                 android:numColumns="3"/>
 
-        <TextView
-                android:id="@+id/titleGasolineType"
-                android:textSize="16sp"
+        <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Выберите тип топлива"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-        />
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+            <TextView
+                    android:id="@+id/titleGasolineType"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Выберите тип топлива. Вы выбрали:"
+                    android:layout_weight="1"
+            />
+            <TextView
+                    android:id="@+id/chooseGasolineType"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+            />
+        </LinearLayout>
+
         <GridView
                 android:id="@+id/gridViewGazolineType"
-                android:verticalSpacing="20dp"
-                android:horizontalSpacing="20dp"
+                android:verticalSpacing="10dp"
+                android:horizontalSpacing="10dp"
                 android:numColumns="3"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
@@ -63,8 +92,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Сумма и объем топлива"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
         />
 
     </LinearLayout>
