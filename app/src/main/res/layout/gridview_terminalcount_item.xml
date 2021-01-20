@@ -3,7 +3,7 @@
         android:id="@+id/grid_item_terminal_count"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background="@android:color/darker_gray"
+        android:background="@color/grigView"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

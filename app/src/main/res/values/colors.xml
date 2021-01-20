@@ -5,5 +5,6 @@
     <color name="colorAccent">#1e3552</color>
     <color name="textColorPrimary">#000000</color>
     <color name="checked">#818BC5</color>
+    <color name="grigView">#c0c0c0</color>
 
 </resources>
