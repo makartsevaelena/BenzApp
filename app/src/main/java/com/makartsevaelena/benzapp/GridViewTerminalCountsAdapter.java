@@ -10,24 +10,22 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class GridViewTerminalCountsAdapter extends BaseAdapter {
-    ArrayList<String> stationOptions;
+    private ArrayList<String> listTerminalCounts;
     private final LayoutInflater inflater;
 
-    public GridViewTerminalCountsAdapter(Context context, ArrayList<String> stationOptions) {
-        this.stationOptions = stationOptions;
+    public GridViewTerminalCountsAdapter(Context context, ArrayList<String> listTerminalCounts) {
+        this.listTerminalCounts = listTerminalCounts;
         this.inflater = LayoutInflater.from(context);
-        notifyDataSetChanged();
     }
-
 
     @Override
     public int getCount() {
-        return stationOptions.size();
+        return listTerminalCounts.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return position;
+    public String getItem(int position) {
+        return listTerminalCounts.get(position);
     }
 
     @Override
@@ -40,7 +38,7 @@ public class GridViewTerminalCountsAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.gridview_terminalcount_item,parent,false);
             TextView textView_terminal_count = (TextView) convertView.findViewById(R.id.grid_item_terminal_count);
-            textView_terminal_count.setText(stationOptions.get(position));
+            textView_terminal_count.setText(listTerminalCounts.get(position));
         }
         return convertView;
     }

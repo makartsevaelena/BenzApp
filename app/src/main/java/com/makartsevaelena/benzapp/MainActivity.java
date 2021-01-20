@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
     TextView chooseTerminalCount;
     TextView chooseGasolineType;
     GridView gridViewTerminalCount;
@@ -28,12 +28,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         gridViewTerminalCount = (GridView) findViewById(R.id.gridViewTerminalCount);
         GridViewTerminalCountsAdapter terminalCountAdapter = new GridViewTerminalCountsAdapter(getApplicationContext(), fillingStation.getTerminalCounts());
         gridViewTerminalCount.setAdapter(terminalCountAdapter);
-        chooseTerminalCount = (TextView) findViewById(R.id.titleTerminalCount);
+        chooseTerminalCount = (TextView) findViewById(R.id.chooseTerminalCount);
+        gridViewTerminalCount.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                chooseTerminalCount.setText(fillingStation.getTerminalCount(position));
+            }
+        });
 
         GridView gridViewGazilineType = (GridView) findViewById(R.id.gridViewGazolineType);
         GridViewGazolineTypesAdapter gazolineTypeAdapter = new GridViewGazolineTypesAdapter(getApplicationContext(), fillingStation.getGazolineTypes());
         gridViewGazilineType.setAdapter(gazolineTypeAdapter);
-        chooseGasolineType = (TextView) findViewById(R.id.titleGasolineType);
+        chooseGasolineType = (TextView) findViewById(R.id.chooseGasolineType);
+        gridViewGazilineType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                chooseGasolineType.setText(fillingStation.getGazolineType(position).getName());
+            }
+        });
 
         navigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         navigationView.setSelectedItemId(R.id.action_main);
@@ -57,17 +69,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 return false;
             }
         });
-
-    }
-
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 

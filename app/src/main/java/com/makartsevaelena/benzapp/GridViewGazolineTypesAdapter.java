@@ -10,24 +10,22 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class GridViewGazolineTypesAdapter extends BaseAdapter {
-    ArrayList<GazolineType> gazolineTypes;
+    private ArrayList<GazolineType> listGazolineTypes;
     private final LayoutInflater inflater;
 
-    public GridViewGazolineTypesAdapter(Context context, ArrayList<GazolineType> gazolineTypes) {
-        this.gazolineTypes = gazolineTypes;
+    public GridViewGazolineTypesAdapter(Context context, ArrayList<GazolineType> listGazolineTypes) {
+        this.listGazolineTypes = listGazolineTypes;
         this.inflater = LayoutInflater.from(context);
-        notifyDataSetChanged();
     }
-
 
     @Override
     public int getCount() {
-        return gazolineTypes.size();
+        return listGazolineTypes.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return position;
+    public GazolineType getItem(int position) {
+        return listGazolineTypes.get(position);
     }
 
     @Override
@@ -41,9 +39,10 @@ public class GridViewGazolineTypesAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.gridview_gazolinetype_item, parent, false);
             TextView textView_gazoline_type = (TextView) convertView.findViewById(R.id.grid_item_gazoline_type);
             TextView textView_gazoline_price = (TextView) convertView.findViewById(R.id.grid_item_gazoline_price);
-            textView_gazoline_type.setText(gazolineTypes.get(position).getName());
-            textView_gazoline_price.setText(String.valueOf(gazolineTypes.get(position).getPrice()));
+            textView_gazoline_type.setText(listGazolineTypes.get(position).getName());
+            textView_gazoline_price.setText(String.valueOf(listGazolineTypes.get(position).getPrice()));
         }
         return convertView;
     }
+
 }

@@ -3,8 +3,8 @@ package com.makartsevaelena.benzapp;
 import java.util.ArrayList;
 
 public class FillingStation {
-    ArrayList<String> listTerminalCounts;
-    ArrayList<GazolineType> listGazolineTypes;
+    private ArrayList<String> listTerminalCounts;
+    private ArrayList<GazolineType> listGazolineTypes;
 
     public FillingStation(ArrayList<String> listTerminalCounts, ArrayList<GazolineType> listGazolineTypes) {
         this.listTerminalCounts = listTerminalCounts;
@@ -46,5 +46,12 @@ public class FillingStation {
 
     public void setGazolineTypes(ArrayList<GazolineType> gazolineTypes) {
         this.listGazolineTypes = gazolineTypes;
+    }
+
+    public GazolineType getGazolineType(int position){
+        return listGazolineTypes.get(position);
+    }
+    public String getTerminalCount(int position){
+        return listTerminalCounts.get(position);
     }
 }

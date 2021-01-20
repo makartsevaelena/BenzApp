@@ -34,15 +34,15 @@
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Выберите номер колонки. Вы выбрали: "
-                    android:layout_weight="1"
+                    android:text="Выберите номер колонки:"
+                    android:layout_weight="0.4"
             />
             <TextView
                     android:id="@+id/chooseTerminalCount"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.6"
             />
 
         </LinearLayout>
@@ -66,7 +66,7 @@
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Выберите тип топлива. Вы выбрали:"
+                    android:text="Выберите тип топлива:"
                     android:layout_weight="1"
             />
             <TextView

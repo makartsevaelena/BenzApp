@@ -1,8 +1,8 @@
 package com.makartsevaelena.benzapp;
 
 public class GazolineType {
-    String name;
-    double price;
+    private String name;
+    private double price;
 
     public GazolineType(String name, double price) {
         this.name = name;
