@@ -18,6 +18,7 @@
                 android:id="@+id/operation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
                 android:text="operation"
                 android:layout_weight="1"/>
 
@@ -25,6 +26,7 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
                 android:text="price"
                 android:layout_weight="1"/>
     </LinearLayout>
