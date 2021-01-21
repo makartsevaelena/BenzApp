@@ -29,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Order order = orders.get(position);
-        holder.orderFinalPrice.setText(String.valueOf(order.getFinalPrice()));
+        holder.orderFinalPrice.setText(order.getFinalPrice() + " руб");
         holder.orderGazolineType.setText(order.getGazolineType());
         holder.orderTerminalCount.setText(order.getTerminalCount());
         holder.orderStartPrice.setText(String.valueOf(order.getStartPrice()));

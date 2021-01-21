@@ -13,6 +13,14 @@ public class Order {
         this.finalPrice = finalPrice;
     }
 
+    public Order(String gazolineType, String terminalCount, double startPrice, int gazolinaValue) {
+        this.gazolineType = gazolineType;
+        this.terminalCount = terminalCount;
+        this.startPrice = startPrice;
+        this.gazolinaValue = gazolinaValue;
+        this.finalPrice = startPrice * gazolinaValue;
+    }
+
     public Order() {
 
     }
@@ -52,6 +60,7 @@ public class Order {
     public double getFinalPrice() {
         return finalPrice;
     }
+
     public void setFinalPrice(double finalPrice) {
         this.finalPrice = finalPrice;
     }

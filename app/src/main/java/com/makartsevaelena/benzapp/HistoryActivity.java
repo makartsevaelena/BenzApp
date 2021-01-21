@@ -52,10 +52,10 @@ public class HistoryActivity extends AppCompatActivity {
 
     }
     private void setData(){
-        operations.add(new Order("АИ-95","2",12,10,120));
-        operations.add(new Order("АИ-95","2",12,10,120));
-        operations.add(new Order("АИ-95","3",12,10,120));
-        operations.add(new Order("АИ-95","4",12,10,120));
+        operations.add(new Order("АИ-92","2",14,10));
+        operations.add(new Order("АИ-80","2",25,10));
+        operations.add(new Order("АИ-98","3",12,10));
+        operations.add(new Order("АИ-95","4",65,10));
     }
 }
 

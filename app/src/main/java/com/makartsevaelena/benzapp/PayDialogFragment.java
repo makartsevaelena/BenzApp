@@ -24,7 +24,7 @@ public class PayDialogFragment extends AppCompatDialogFragment {
                 .setMessage("Заправить " + order.getGazolinaValue() +
                         " л топливом " + order.getGazolineType() +
                         " по стоимости " + order.getStartPrice() +
-                        "рублей за литр. Колонка № " + order.getTerminalCount() +
+                        " рублей за литр. Колонка № " + order.getTerminalCount() +
                         ". Сумма к оплате: " + order.getFinalPrice()
                 )
                 .setPositiveButton("Оплатить", new DialogInterface.OnClickListener() {
