@@ -21,13 +21,57 @@
             app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-                android:id="@+id/titleTerminalCount"
+                android:id="@+id/profile_title_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:textSize="16sp"
-                android:text="Ваша персональная информация здесь"
-        />
+                android:background="@color/gridView"
+                android:text="ФИО"/>
+        <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textSize="16sp"
+                android:text="Иван Иванов"/>
+        <TextView
+                android:id="@+id/profile_title_cardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textSize="16sp"
+                android:background="@color/gridView"
+                android:text="Оплата картой"/>
+        <TextView
+                android:id="@+id/profile_cardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textSize="16sp"
+                android:text="**** **** **** 0000"/>
+        <TextView
+                android:id="@+id/profile_title_preferences"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textSize="16sp"
+                android:background="@color/gridView"
+                android:text="Предпочтения"/>
+        <TextView
+                android:id="@+id/profile_full"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textSize="16sp"
+                android:text="Полный бак"/>
+        <TextView
+                android:id="@+id/profile_gazolineType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textSize="16sp"
+                android:text="Тип топлива: АИ-95"/>
     </LinearLayout>
     <include
             layout="@layout/bottom_navigation"
