@@ -2,11 +2,13 @@ package com.makartsevaelena.benzapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -65,10 +67,31 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent,
                                        View itemSelected, int selectedItemPosition, long selectedId) {
-                order.setGazolinaValue(selectedItemPosition);
+                order.setGazolinaValue(Integer.parseInt(spinnerArray.get(selectedItemPosition)));
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        Button buttonPay = (Button) findViewById(R.id.button_pay);
+        buttonPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (order.getStartPrice() == 0) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Не выбрано топливо", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else if (order.getTerminalCount() == null) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Не выбрана колонка", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    order.setFinalPrice(order.getGazolinaValue() * order.getStartPrice());
+                    FragmentManager manager = getSupportFragmentManager();
+                    PayDialogFragment payDialogFragment = new PayDialogFragment(order);
+                    payDialogFragment.show(manager, "payDialog");
+                }
             }
         });
 

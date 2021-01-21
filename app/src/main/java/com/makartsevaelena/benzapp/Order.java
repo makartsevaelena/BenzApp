@@ -2,16 +2,15 @@ package com.makartsevaelena.benzapp;
 
 public class Order {
     private String gazolineType, terminalCount;
-    double startPrice;
-    int gazolinaValue;
-    double finalPrice;
+    private double startPrice, finalPrice;
+    private int gazolinaValue;
 
-    public Order(String gazolineType, String terminalCount, double startPrice, int gazolinaValue) {
+    public Order(String gazolineType, String terminalCount, double startPrice, int gazolinaValue, double finalPrice) {
         this.gazolineType = gazolineType;
         this.terminalCount = terminalCount;
         this.startPrice = startPrice;
         this.gazolinaValue = gazolinaValue;
-        this.finalPrice = startPrice * gazolinaValue;
+        this.finalPrice = finalPrice;
     }
 
     public Order() {
@@ -52,6 +51,9 @@ public class Order {
 
     public double getFinalPrice() {
         return finalPrice;
+    }
+    public void setFinalPrice(double finalPrice) {
+        this.finalPrice = finalPrice;
     }
 
 }
