@@ -24,7 +24,7 @@ public class PayDialogFragment extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Данные заказа")
                 .setMessage("Заправить " + order.getGazolinaValue() +
-                        " литров топливом " + order.getGazolineType() +
+                        " лc топливом " + order.getGazolineType() +
                         " по стоимости " + order.getStartPrice() +
                         " за литр. Колонка № " + order.getTerminalCount() +
                         ". Сумма к оплате: " + String.valueOf(order.getFinalPrice())

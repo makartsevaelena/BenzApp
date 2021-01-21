@@ -3,6 +3,7 @@ package com.makartsevaelena.benzapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
@@ -81,10 +82,12 @@ public class MainActivity extends AppCompatActivity {
                 if (order.getStartPrice() == 0) {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Не выбрано топливо", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else if (order.getTerminalCount() == null) {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Не выбрана колонка", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else {
                     order.setFinalPrice(order.getGazolinaValue() * order.getStartPrice());
