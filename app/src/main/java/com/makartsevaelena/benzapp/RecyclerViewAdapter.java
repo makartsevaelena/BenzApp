@@ -29,7 +29,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Order order = orders.get(position);
-        holder.orderSumPrice.setText(order.getSumPrice() + " руб");
+        holder.orderId.setText(String.valueOf(order.getOrderId()));
+        holder.orderSumPrice.setText(order.getSumPrice() + " " + order.getCurrency());
         holder.orderGazolineType.setText(order.getGazolineType());
         holder.orderTerminalCount.setText(order.getTerminalCount());
         holder.orderPriceForLiter.setText(String.valueOf(order.getPriceForLiter()));
@@ -42,10 +43,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView orderSumPrice, orderGazolineValue, orderPriceForLiter, orderTerminalCount, orderGazolineType;
+        final TextView orderId, orderSumPrice, orderGazolineValue, orderPriceForLiter, orderTerminalCount, orderGazolineType;
 
         ViewHolder(View view) {
             super(view);
+            orderId = (TextView) view.findViewById(R.id.order_orderid);
             orderGazolineType = (TextView) view.findViewById(R.id.order_gazolineType);
             orderTerminalCount = (TextView) view.findViewById(R.id.order_terminalCount);
             orderPriceForLiter = (TextView) view.findViewById(R.id.order_startPrice);

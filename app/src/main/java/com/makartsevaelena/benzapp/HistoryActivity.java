@@ -20,7 +20,7 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        orders = new ArrayList<Order>();
+        orders = new ArrayList<>();
         setData();
         recyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(), orders);
         recyclerView.setAdapter(recyclerViewAdapter);
