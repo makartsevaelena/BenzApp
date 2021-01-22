@@ -10,10 +10,10 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:layout_alignParentTop="true"
             android:padding="3dp"
@@ -26,7 +26,6 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
                 android:layout_marginBottom="10dp">
             <TextView
                     android:id="@+id/title_activitymain_terminalcount"
@@ -51,6 +50,8 @@
                 android:layout_height="wrap_content"
                 android:verticalSpacing="10dp"
                 android:horizontalSpacing="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:numColumns="3"/>
 
         <LinearLayout
@@ -79,6 +80,8 @@
                 android:id="@+id/gridViewGazolineType"
                 android:verticalSpacing="10dp"
                 android:horizontalSpacing="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:numColumns="3"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
@@ -115,9 +118,9 @@
             android:text="Оплатить"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="19dp"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"/>
 
     <include

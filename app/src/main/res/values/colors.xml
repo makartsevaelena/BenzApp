@@ -3,8 +3,6 @@
     <color name="colorPrimary">#1e3552</color>
     <color name="colorPrimaryDark">#1e3552</color>
     <color name="colorAccent">#1e3552</color>
-    <color name="textColorPrimary">#000000</color>
-    <color name="checked">#818BC5</color>
     <color name="gridView">#c0c0c0</color>
 
 </resources>

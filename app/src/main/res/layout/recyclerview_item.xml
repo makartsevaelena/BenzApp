@@ -12,6 +12,8 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"/>
     <TextView
             android:id="@+id/order_gazolineType"
@@ -19,6 +21,8 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"/>
     <TextView
             android:id="@+id/order_terminalCount"
@@ -26,6 +30,8 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"/>
     <TextView
             android:id="@+id/order_startPrice"
@@ -33,6 +39,8 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"/>
     <TextView
             android:id="@+id/order_gazolineValue"
@@ -40,6 +48,8 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"/>
 
     <TextView
@@ -48,5 +58,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"/>
 </LinearLayout>
