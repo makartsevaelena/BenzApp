@@ -2,7 +2,6 @@ package com.makartsevaelena.benzapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         buttonPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (order.getStartPrice() == 0) {
+                if (order.getPriceForLiter() == 0) {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Не выбрано топливо", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else {
-                    order.setFinalPrice(order.getGazolinaValue() * order.getStartPrice());
+                    order.setFinalPrice(order.getGazolinaValue() * order.getPriceForLiter());
                     FragmentManager manager = getSupportFragmentManager();
                     PayDialogFragment payDialogFragment = new PayDialogFragment(order);
                     payDialogFragment.show(manager, "payDialog");

@@ -49,7 +49,7 @@ public class Order {
         this.terminalCount = terminalCount;
     }
 
-    public double getStartPrice() {
+    public double getPriceForLiter() {
         return startPrice;
     }
 
@@ -57,7 +57,7 @@ public class Order {
         this.startPrice = startPrice;
     }
 
-    public double getFinalPrice() {
+    public double getSummaryPrice() {
         return finalPrice;
     }
 

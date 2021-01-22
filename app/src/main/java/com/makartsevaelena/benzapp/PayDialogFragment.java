@@ -1,9 +1,10 @@
 package com.makartsevaelena.benzapp;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class PayDialogFragment extends AppCompatDialogFragment {
     Order order;
+    String numberOrder = "123456";
 
     public PayDialogFragment(Order order) {
         this.order = order;
@@ -20,24 +22,21 @@ public class PayDialogFragment extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Данные заказа")
-                .setMessage("Заправить " + order.getGazolinaValue() +
-                        " л топливом " + order.getGazolineType() +
-                        " по стоимости " + order.getStartPrice() +
-                        " рублей за литр. Колонка № " + order.getTerminalCount() +
-                        ". Сумма к оплате: " + order.getFinalPrice()
-                )
-                .setPositiveButton("Оплатить", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Log.d("order", String.valueOf(order.getFinalPrice()));
-                    }
-                })
-                .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.layout_bill, null);
+        builder.setView(view);
+        TextView textView_bill_numberOrder = (TextView) view.findViewById(R.id.bill_orderNumber);
+        TextView textView_bill_terminalCount = (TextView) view.findViewById(R.id.bill_terminalCount);
+        TextView textView_bill_gazolineType = (TextView) view.findViewById(R.id.bill_gazolineType);
+        TextView textView_bill_priceForLiter = (TextView) view.findViewById(R.id.bill_priceForLiter);
+        TextView textView_bill_gazolineValue = (TextView) view.findViewById(R.id.bill_gazolineValue);
+        TextView textView_bill_bill_summary = (TextView) view.findViewById(R.id.bill_summary);
+        textView_bill_numberOrder.setText(numberOrder);
+        textView_bill_terminalCount.setText(order.getTerminalCount());
+        textView_bill_gazolineType.setText(order.getGazolineType());
+        textView_bill_priceForLiter.setText(String.valueOf(order.getPriceForLiter()));
+        textView_bill_gazolineValue.setText(String.valueOf(order.getGazolinaValue()));
+        textView_bill_bill_summary.setText(String.valueOf(order.getSummaryPrice()));
         return builder.create();
     }
 }

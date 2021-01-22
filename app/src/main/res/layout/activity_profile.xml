@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:background="@color/gridView"
                 android:text="ФИО"/>
         <TextView
@@ -49,6 +50,7 @@
                 android:layout_marginTop="24dp"
                 android:textSize="16sp"
                 android:background="@color/gridView"
+                android:textStyle="bold"
                 android:text="Карта для оплаты"/>
         <TextView
                 android:id="@+id/profile_cardNumber"
@@ -64,6 +66,7 @@
                 android:layout_marginTop="24dp"
                 android:textSize="16sp"
                 android:background="@color/gridView"
+                android:textStyle="bold"
                 android:text="Предпочтения"/>
         <TextView
                 android:id="@+id/profile_gazolineType"
