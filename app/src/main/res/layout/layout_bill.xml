@@ -8,7 +8,6 @@
         tools:context="com.makartsevaelena.benzapp.MainActivity">
 
     <LinearLayout
-            android:id="@+id/line1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -23,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="vertical">
         <TextView
-                android:id="@+id/bill_title"
+                android:id="@+id/title_bill"
                 android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,14 +38,14 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="10dp">
             <TextView
-                    android:id="@+id/bill_titleOrderNumber"
+                    android:id="@+id/title_bill_orderid"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="№ заказа:"
                     android:layout_weight="0.4"/>
             <TextView
-                    android:id="@+id/bill_orderNumber"
+                    android:id="@+id/textview_bill_orderid"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -61,14 +60,14 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="10dp">
             <TextView
-                    android:id="@+id/bill_titleTerminalCount"
+                    android:id="@+id/title_bill_terminalcount"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Колонка:"
                     android:layout_weight="0.4"/>
             <TextView
-                    android:id="@+id/bill_terminalCount"
+                    android:id="@+id/textview_bill_terminalcount"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,14 +82,14 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="10dp">
             <TextView
-                    android:id="@+id/bill_titleGazolineType"
+                    android:id="@+id/title_bill_gazolinetype"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Топливо:"
                     android:layout_weight="0.4"/>
             <TextView
-                    android:id="@+id/bill_gazolineType"
+                    android:id="@+id/textview_bill_gazolinetype"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,14 +104,14 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="10dp">
             <TextView
-                    android:id="@+id/bill_titlePriceForLiter"
+                    android:id="@+id/title_bill_priceforliter"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Цена за литр:"
                     android:layout_weight="0.4"/>
             <TextView
-                    android:id="@+id/bill_priceForLiter"
+                    android:id="@+id/textview_bill_priceforliter"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -127,14 +126,14 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="10dp">
             <TextView
-                    android:id="@+id/bill_titleGazolineValue"
+                    android:id="@+id/title_bill_gazolinevalue"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Объем:"
                     android:layout_weight="0.4"/>
             <TextView
-                    android:id="@+id/bill_gazolineValue"
+                    android:id="@+id/textView_bill_gazolineValue"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -149,14 +148,14 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="10dp">
             <TextView
-                    android:id="@+id/bill_titleSummary"
+                    android:id="@+id/title_bill_sumprice"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Сумма заказа:"
                     android:layout_weight="0.4"/>
             <TextView
-                    android:id="@+id/bill_summary"
+                    android:id="@+id/textview_bill_sumprice"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -164,63 +163,9 @@
                     android:gravity="right"
                     android:layout_weight="0.6"/>
         </LinearLayout>
-<!--        <TextView-->
-<!--                android:id="@+id/bill_titleCreditCard"-->
-<!--                android:textSize="16sp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textStyle="bold"-->
-<!--                android:gravity="center"-->
-<!--                android:text="Информация для оплаты"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginBottom="10dp"-->
-<!--                android:layout_weight="0.4"/>-->
-<!--        <LinearLayout-->
-<!--                android:orientation="horizontal"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginTop="2dp"-->
-<!--                android:layout_marginBottom="10dp">-->
-<!--            <TextView-->
-<!--                    android:id="@+id/bill_titlePaymentMethod"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Способ оплаты"-->
-<!--                    android:layout_weight="0.4"/>-->
-<!--            <TextView-->
-<!--                    android:id="@+id/bill_paymentMethod"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="не выбран"-->
-<!--                    android:gravity="right"-->
-<!--                    android:layout_weight="0.6"/>-->
-<!--        </LinearLayout>-->
-<!--        <LinearLayout-->
-<!--                android:orientation="horizontal"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginTop="2dp"-->
-<!--                android:layout_marginBottom="10dp">-->
-<!--            <TextView-->
-<!--                    android:id="@+id/bill_titleEmail"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Email для чека"-->
-<!--                    android:layout_weight="0.4"/>-->
-<!--            <TextView-->
-<!--                    android:id="@+id/bill_email"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="не указан"-->
-<!--                    android:gravity="right"-->
-<!--                    android:layout_weight="0.6"/>-->
-<!--        </LinearLayout>-->
+
         <Button
-                android:id="@+id/button"
+                android:id="@+id/button_bill_confirm"
                 android:text="Подтверждаю"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

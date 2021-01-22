@@ -37,8 +37,8 @@ public class GridViewTerminalCountsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.gridview_terminalcount_item,parent,false);
-            TextView textView_terminal_count = (TextView) convertView.findViewById(R.id.grid_item_terminal_count);
-            textView_terminal_count.setText(listTerminalCounts.get(position));
+            TextView textview_griditem_terminalcount = (TextView) convertView.findViewById(R.id.textview_griditem_terminalcount);
+            textview_griditem_terminalcount.setText(listTerminalCounts.get(position));
         }
         return convertView;
     }

@@ -29,10 +29,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Order order = orders.get(position);
-        holder.orderFinalPrice.setText(order.getSummaryPrice() + " руб");
+        holder.orderSumPrice.setText(order.getSumPrice() + " руб");
         holder.orderGazolineType.setText(order.getGazolineType());
         holder.orderTerminalCount.setText(order.getTerminalCount());
-        holder.orderStartPrice.setText(String.valueOf(order.getPriceForLiter()));
+        holder.orderPriceForLiter.setText(String.valueOf(order.getPriceForLiter()));
         holder.orderGazolineValue.setText(String.valueOf(order.getGazolinaValue()));
     }
 
@@ -42,15 +42,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView orderFinalPrice, orderGazolineValue, orderStartPrice, orderTerminalCount, orderGazolineType;
+        final TextView orderSumPrice, orderGazolineValue, orderPriceForLiter, orderTerminalCount, orderGazolineType;
 
         ViewHolder(View view) {
             super(view);
             orderGazolineType = (TextView) view.findViewById(R.id.order_gazolineType);
             orderTerminalCount = (TextView) view.findViewById(R.id.order_terminalCount);
-            orderStartPrice = (TextView) view.findViewById(R.id.order_startPrice);
+            orderPriceForLiter = (TextView) view.findViewById(R.id.order_startPrice);
             orderGazolineValue = (TextView) view.findViewById(R.id.order_gazolineValue);
-            orderFinalPrice = (TextView) view.findViewById(R.id.order_finalPrice);
+            orderSumPrice = (TextView) view.findViewById(R.id.order_finalPrice);
         }
     }
 }

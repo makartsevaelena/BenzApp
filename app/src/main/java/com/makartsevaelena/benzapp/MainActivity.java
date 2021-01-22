@@ -14,12 +14,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    TextView textView_selectedTerminalCount;
-    TextView textView_selectedGasolineType;
+    TextView textview_activitymain_selectedTerminalCount;
+    TextView textview_activitymain_selectedGasolineType;
     GridView gridViewTerminalCount;
     FillingStation fillingStation;
     ArrayList<String> spinnerArray;
-    BottomNavigationView navigationView;
+    BottomNavigationView bottomNavigationView;
     Order order;
     int maxGazolineValue = 100;
 
@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
         gridViewTerminalCount = (GridView) findViewById(R.id.gridViewTerminalCount);
         GridViewTerminalCountsAdapter terminalCountAdapter = new GridViewTerminalCountsAdapter(getApplicationContext(), fillingStation.getTerminalCounts());
         gridViewTerminalCount.setAdapter(terminalCountAdapter);
-        textView_selectedTerminalCount = (TextView) findViewById(R.id.selectedTerminalCount);
+        textview_activitymain_selectedTerminalCount = (TextView) findViewById(R.id.textview_activitymain_selectedTerminalCount);
         gridViewTerminalCount.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                textView_selectedTerminalCount.setText(fillingStation.getTerminalCount(position));
+                textview_activitymain_selectedTerminalCount.setText(fillingStation.getTerminalCount(position));
                 order.setTerminalCount(fillingStation.getTerminalCount(position));
             }
         });
@@ -46,13 +46,13 @@ public class MainActivity extends AppCompatActivity {
         GridView gridViewGazilineType = (GridView) findViewById(R.id.gridViewGazolineType);
         GridViewGazolineTypesAdapter gazolineTypeAdapter = new GridViewGazolineTypesAdapter(getApplicationContext(), fillingStation.getGazolineTypes());
         gridViewGazilineType.setAdapter(gazolineTypeAdapter);
-        textView_selectedGasolineType = (TextView) findViewById(R.id.selectedGasolineType);
+        textview_activitymain_selectedGasolineType = (TextView) findViewById(R.id.textview_activitymain_selectedGasolineType);
         gridViewGazilineType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                textView_selectedGasolineType.setText(fillingStation.getGazolineType(position).getName());
-                order.setGazolineType(fillingStation.getGazolineType(position).getName());
-                order.setStartPrice(fillingStation.getGazolineType(position).getPrice());
+                textview_activitymain_selectedGasolineType.setText(fillingStation.getGazolineType(position).getGazoliveType());
+                order.setGazolineType(fillingStation.getGazolineType(position).getGazoliveType());
+                order.setPriceForLiter(fillingStation.getGazolineType(position).getPriceForLiter());
             }
         });
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonPay = (Button) findViewById(R.id.button_pay);
+        Button buttonPay = (Button) findViewById(R.id.button_activitymain_pay);
         buttonPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else {
-                    order.setFinalPrice(order.getGazolinaValue() * order.getPriceForLiter());
+                    order.setSumPrice(order.getGazolinaValue() * order.getPriceForLiter());
                     FragmentManager manager = getSupportFragmentManager();
                     PayDialogFragment payDialogFragment = new PayDialogFragment(order);
                     payDialogFragment.show(manager, "payDialog");
@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        navigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        navigationView.setSelectedItemId(R.id.action_main);
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.action_main);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {

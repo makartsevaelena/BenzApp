@@ -37,10 +37,10 @@ public class GridViewGazolineTypesAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.gridview_gazolinetype_item, parent, false);
-            TextView textView_gazoline_type = (TextView) convertView.findViewById(R.id.grid_item_gazoline_type);
-            TextView textView_gazoline_price = (TextView) convertView.findViewById(R.id.grid_item_gazoline_price);
-            textView_gazoline_type.setText(listGazolineTypes.get(position).getName());
-            textView_gazoline_price.setText(String.valueOf(listGazolineTypes.get(position).getPrice()));
+            TextView textview_griditem_gazolinetype = (TextView) convertView.findViewById(R.id.textview_griditem_gazolinetype);
+            TextView textview_griditem_priceforliter = (TextView) convertView.findViewById(R.id.textview_griditem_priceforliter);
+            textview_griditem_gazolinetype.setText(listGazolineTypes.get(position).getGazoliveType());
+            textview_griditem_priceforliter.setText(String.valueOf(listGazolineTypes.get(position).getPriceForLiter()));
         }
         return convertView;
     }

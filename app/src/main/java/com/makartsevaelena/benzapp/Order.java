@@ -2,23 +2,23 @@ package com.makartsevaelena.benzapp;
 
 public class Order {
     private String gazolineType, terminalCount;
-    private double startPrice, finalPrice;
+    private double priceForLiter, sumPrice;
     private int gazolinaValue, orderId;
 
-    public Order(String gazolineType, String terminalCount, double startPrice, int gazolinaValue, double finalPrice) {
+    public Order(String gazolineType, String terminalCount, double priceForLiter, int gazolinaValue, double sumPrice) {
         this.gazolineType = gazolineType;
         this.terminalCount = terminalCount;
-        this.startPrice = startPrice;
+        this.priceForLiter = priceForLiter;
         this.gazolinaValue = gazolinaValue;
-        this.finalPrice = finalPrice;
+        this.sumPrice = sumPrice;
     }
 
-    public Order(String gazolineType, String terminalCount, double startPrice, int gazolinaValue) {
+    public Order(String gazolineType, String terminalCount, double priceForLiter, int gazolinaValue) {
         this.gazolineType = gazolineType;
         this.terminalCount = terminalCount;
-        this.startPrice = startPrice;
+        this.priceForLiter = priceForLiter;
         this.gazolinaValue = gazolinaValue;
-        this.finalPrice = startPrice * gazolinaValue;
+        this.sumPrice = priceForLiter * gazolinaValue;
     }
 
     public Order() {
@@ -50,19 +50,19 @@ public class Order {
     }
 
     public double getPriceForLiter() {
-        return startPrice;
+        return priceForLiter;
     }
 
-    public void setStartPrice(double startPrice) {
-        this.startPrice = startPrice;
+    public void setPriceForLiter(double priceForLiter) {
+        this.priceForLiter = priceForLiter;
     }
 
-    public double getSummaryPrice() {
-        return finalPrice;
+    public double getSumPrice() {
+        return sumPrice;
     }
 
-    public void setFinalPrice(double finalPrice) {
-        this.finalPrice = finalPrice;
+    public void setSumPrice(double sumPrice) {
+        this.sumPrice = sumPrice;
     }
 
 }

@@ -1,27 +1,27 @@
 package com.makartsevaelena.benzapp;
 
 public class GazolineType {
-    private String name,currency;
-    private double price;
+    private String gazoliveType,currency;
+    private double priceForLiter;
 
-    public GazolineType(String name, double price) {
-        this.name = name;
-        this.price = price;
+    public GazolineType(String gazoliveType, double priceForLiter) {
+        this.gazoliveType = gazoliveType;
+        this.priceForLiter = priceForLiter;
     }
 
-    public String getName() {
-        return name;
+    public String getGazoliveType() {
+        return gazoliveType;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGazoliveType(String gazoliveType) {
+        this.gazoliveType = gazoliveType;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPriceForLiter() {
+        return priceForLiter;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setPriceForLiter(float priceForLiter) {
+        this.priceForLiter = priceForLiter;
     }
 }

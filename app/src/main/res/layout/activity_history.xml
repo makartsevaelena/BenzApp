@@ -21,28 +21,35 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
         <TextView
-                android:id="@+id/history_gazolineType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Топливо"
-                android:textSize="16sp"
-                android:layout_weight="1"/>
-        <TextView
-                android:id="@+id/history_terminalCount"
+                android:id="@+id/title_history_orderid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="№"
                 android:textSize="16sp"
                 android:layout_weight="1"/>
         <TextView
-                android:id="@+id/history_startPrice"
+                android:id="@+id/title_history_gazolinetype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Топливо"
+                android:textSize="16sp"
+                android:layout_weight="1"/>
+        <TextView
+                android:id="@+id/title_history_terminalcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="№"
+                android:textSize="16sp"
+                android:layout_weight="1"/>
+        <TextView
+                android:id="@+id/title_history_priceforliter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Руб л"
                 android:textSize="16sp"
                 android:layout_weight="1"/>
         <TextView
-                android:id="@+id/history_gazolineValue"
+                android:id="@+id/title_history_gazolineValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="л"
@@ -50,7 +57,7 @@
                 android:layout_weight="1"/>
 
         <TextView
-                android:id="@+id/history_finalPrice"
+                android:id="@+id/title_history_sumprice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Сумма"

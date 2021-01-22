@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView
-        android:id="@+id/grid_item_terminal_count"
+        android:id="@+id/textview_griditem_terminalcount"
         android:layout_gravity="center"
         android:gravity="center"
         android:background="@color/gridView"

@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity {
-    ArrayList<Order> operations;
+    ArrayList<Order> orders;
     RecyclerViewAdapter recyclerViewAdapter;
 
     @Override
@@ -20,16 +20,16 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        operations = new ArrayList<Order>();
+        orders = new ArrayList<Order>();
         setData();
-        recyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(), operations);
+        recyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(), orders);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerViewAdapter.notifyDataSetChanged();
 
-        BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        navigationView.setSelectedItemId(R.id.action_history);
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.action_history);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
@@ -52,10 +52,10 @@ public class HistoryActivity extends AppCompatActivity {
 
     }
     private void setData(){
-        operations.add(new Order("АИ-92","2",14,10));
-        operations.add(new Order("АИ-80","2",25,10));
-        operations.add(new Order("АИ-98","3",12,10));
-        operations.add(new Order("АИ-95","4",65,10));
+        orders.add(new Order("АИ-92","2",14,10));
+        orders.add(new Order("АИ-80","2",25,10));
+        orders.add(new Order("АИ-98","3",12,10));
+        orders.add(new Order("АИ-95","4",65,10));
     }
 }
 

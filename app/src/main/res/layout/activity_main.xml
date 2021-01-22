@@ -8,7 +8,6 @@
         tools:context="com.makartsevaelena.benzapp.MainActivity">
 
     <LinearLayout
-            android:id="@+id/line1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -30,7 +29,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="10dp">
             <TextView
-                    android:id="@+id/titleTerminalCount"
+                    android:id="@+id/title_activitymain_terminalcount"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -38,7 +37,7 @@
                     android:textStyle="bold"
                     android:layout_weight="0.4"/>
             <TextView
-                    android:id="@+id/selectedTerminalCount"
+                    android:id="@+id/textview_activitymain_selectedTerminalCount"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -61,7 +60,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
             <TextView
-                    android:id="@+id/titleGasolineType"
+                    android:id="@+id/title_activitymain_gasolinetype"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,7 +68,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"/>
             <TextView
-                    android:id="@+id/selectedGasolineType"
+                    android:id="@+id/textview_activitymain_selectedGasolineType"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -91,7 +90,7 @@
                 android:layout_marginBottom="10dp">
 
             <TextView
-                    android:id="@+id/gasolineValue"
+                    android:id="@+id/textview_activitymain_gasolinevalue"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -112,10 +111,10 @@
     </LinearLayout>
 
     <Button
+            android:id="@+id/button_activitymain_pay"
             android:text="Оплатить"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_pay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="19dp"
