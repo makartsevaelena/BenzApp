@@ -3,7 +3,7 @@ package com.makartsevaelena.benzapp;
 public class Order {
     private String gazolineType, terminalCount;
     private double startPrice, finalPrice;
-    private int gazolinaValue;
+    private int gazolinaValue, orderId;
 
     public Order(String gazolineType, String terminalCount, double startPrice, int gazolinaValue, double finalPrice) {
         this.gazolineType = gazolineType;

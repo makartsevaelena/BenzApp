@@ -36,13 +36,20 @@
                 android:textSize="16sp"
                 android:text="Иван Иванов"/>
         <TextView
+                android:id="@+id/profile_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textSize="16sp"
+                android:text="E-mail"/>
+        <TextView
                 android:id="@+id/profile_title_cardNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:textSize="16sp"
                 android:background="@color/gridView"
-                android:text="Оплата картой"/>
+                android:text="Карта для оплаты"/>
         <TextView
                 android:id="@+id/profile_cardNumber"
                 android:layout_width="match_parent"
@@ -58,13 +65,6 @@
                 android:textSize="16sp"
                 android:background="@color/gridView"
                 android:text="Предпочтения"/>
-        <TextView
-                android:id="@+id/profile_full"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:textSize="16sp"
-                android:text="Полный бак"/>
         <TextView
                 android:id="@+id/profile_gazolineType"
                 android:layout_width="match_parent"
