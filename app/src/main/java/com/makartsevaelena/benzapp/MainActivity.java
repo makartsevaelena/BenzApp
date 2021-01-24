@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
     int maxGazolineValue = 100;
     int backpositionTerminalCount = -1;
     int backpositionGazolineType = -1;
-    final int REQUEST_ENABLE_BT = 0;
+    final int REQUEST_ENABLE_BT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // verifyBLEIsSupported();
+        verifyBLEIsSupported();
 
         fillingStation = new FillingStation();
         order = new Order();
@@ -43,13 +43,17 @@ public class MainActivity extends AppCompatActivity {
         setBottomNavigation();
 
     }
+    protected void onResume() {
+        super.onResume();
+        verifyBLEIsSupported();
+    }
+
 
     private void verifyBLEIsSupported() {
         // Initializes Bluetooth adapter.
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
-
         // Ensures Bluetooth is available on the device and it is enabled. If not,
         // displays a dialog requesting user permission to enable Bluetooth.
         if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
@@ -57,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
     }
-
 
     private void setBottomNavigation() {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
