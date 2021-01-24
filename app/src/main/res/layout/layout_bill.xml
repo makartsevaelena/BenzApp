@@ -156,7 +156,7 @@
                     android:layout_weight="0.4"/>
             <TextView
                     android:id="@+id/textview_bill_sumprice"
-                    android:textSize="16sp"
+                    android:textSize="25sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -167,9 +167,9 @@
         <Button
                 android:id="@+id/button_bill_confirm"
                 android:text="Подтверждаю"
-                android:background="@color/gridView"
+                android:background="@color/colorGridView"
                 android:textColor="@android:color/white"
-                android:layout_width="146dp"
+                android:layout_width="138dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

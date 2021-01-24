@@ -6,7 +6,7 @@ public class Order {
     private int gazolinaValue, orderId;
 
     public Order(int orderId,String gazolineType, String terminalCount, double priceForLiter, int gazolinaValue, double sumPrice) {
-        currency = "rub";
+        this.currency = "rub";
         this.orderId = orderId;
         this.gazolineType = gazolineType;
         this.terminalCount = terminalCount;
@@ -25,7 +25,7 @@ public class Order {
         this.sumPrice = priceForLiter * gazolinaValue;
     }
     public Order(){
-
+        currency = "rub";
     }
 
     public int getGazolinaValue() {

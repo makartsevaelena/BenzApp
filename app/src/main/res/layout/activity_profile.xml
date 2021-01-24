@@ -22,11 +22,13 @@
         <TextView
                 android:id="@+id/title_profile_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
                 android:layout_marginTop="2dp"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:background="@color/gridView"
+                android:paddingStart="3dp"
+                android:paddingTop="7dp"
+                android:textColor="@android:color/white"
+                android:background="@color/colorGridView"
                 android:text="ФИО"/>
         <TextView
                 android:id="@+id/textview_profile_name"
@@ -47,12 +49,14 @@
         <TextView
                 android:id="@+id/title_profile_cardnumber"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:textSize="16sp"
-                android:background="@color/gridView"
-                android:textStyle="bold"
+                android:paddingStart="3dp"
+                android:paddingTop="7dp"
+                android:textColor="@android:color/white"
+                android:background="@color/colorGridView"
                 android:text="Карта для оплаты"/>
         <TextView
                 android:id="@+id/textview_profile_cardNumber"
@@ -65,12 +69,14 @@
         <TextView
                 android:id="@+id/title_profile_preferences"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:paddingStart="3dp"
+                android:paddingTop="7dp"
                 android:textSize="16sp"
-                android:background="@color/gridView"
-                android:textStyle="bold"
+                android:background="@color/colorGridView"
+                android:textColor="@android:color/white"
                 android:text="Предпочтения"/>
         <TextView
                 android:id="@+id/textview_profile_gazolinetype"

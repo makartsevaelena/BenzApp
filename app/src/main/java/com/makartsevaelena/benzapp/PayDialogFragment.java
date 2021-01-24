@@ -36,15 +36,15 @@ public class PayDialogFragment extends AppCompatDialogFragment {
         textView_bill_orderId.setText(orderId);
         textView_bill_terminalCount.setText(order.getTerminalCount());
         textView_bill_gazolineType.setText(order.getGazolineType());
-        textView_bill_priceForLiter.setText(String.valueOf(order.getPriceForLiter()));
+        textView_bill_priceForLiter.setText(String.valueOf(order.getPriceForLiter()) + " " + order.getCurrency());
         textView_bill_gazolineValue.setText(String.valueOf(order.getGazolinaValue()));
-        textView_bill_sumprice.setText(String.valueOf(order.getSumPrice()));
+        textView_bill_sumprice.setText(String.valueOf(order.getSumPrice()) + " " + order.getCurrency());
 
         Button button_bill_confirm = (Button) view.findViewById(R.id.button_bill_confirm);
         button_bill_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("billConfirm","clicked");
+                Log.d("billConfirm", "clicked");
             }
         });
         return builder.create();
