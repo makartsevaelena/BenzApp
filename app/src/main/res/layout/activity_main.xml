@@ -116,6 +116,8 @@
     <Button
             android:id="@+id/button_activitymain_pay"
             android:text="Оплатить"
+            android:background="@color/gridView"
+            android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"

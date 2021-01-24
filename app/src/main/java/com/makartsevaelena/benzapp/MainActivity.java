@@ -1,6 +1,7 @@
 package com.makartsevaelena.benzapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Order order;
     int maxGazolineValue = 100;
+    int backpositionTerminalCount = -1;
+    int backpositionGazolineType = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         order = new Order();
 
         gridViewTerminalCount = (GridView) findViewById(R.id.gridViewTerminalCount);
-        GridViewTerminalCountsAdapter terminalCountAdapter = new GridViewTerminalCountsAdapter(getApplicationContext(), fillingStation.getTerminalCounts());
+        final GridViewTerminalCountsAdapter terminalCountAdapter = new GridViewTerminalCountsAdapter(getApplicationContext(), fillingStation.getTerminalCounts());
         gridViewTerminalCount.setAdapter(terminalCountAdapter);
         textview_activitymain_selectedTerminalCount = (TextView) findViewById(R.id.textview_activitymain_selectedTerminalCount);
         gridViewTerminalCount.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -40,10 +43,19 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 textview_activitymain_selectedTerminalCount.setText(fillingStation.getTerminalCount(position));
                 order.setTerminalCount(fillingStation.getTerminalCount(position));
+                TextView gridViewItem = (TextView) view;
+                gridViewItem.setBackgroundColor(Color.parseColor("#0a0d13"));
+                TextView backSelectedItem = (TextView) gridViewTerminalCount.getChildAt(backpositionTerminalCount);
+                if (backpositionTerminalCount != -1) {
+                    backSelectedItem.setSelected(false);
+                    backSelectedItem.setBackgroundColor(Color.parseColor("#1e3552"));
+                }
+                backpositionTerminalCount = position;
             }
         });
 
-        GridView gridViewGazilineType = (GridView) findViewById(R.id.gridViewGazolineType);
+
+        final GridView gridViewGazilineType = (GridView) findViewById(R.id.gridViewGazolineType);
         GridViewGazolineTypesAdapter gazolineTypeAdapter = new GridViewGazolineTypesAdapter(getApplicationContext(), fillingStation.getGazolineTypes());
         gridViewGazilineType.setAdapter(gazolineTypeAdapter);
         textview_activitymain_selectedGasolineType = (TextView) findViewById(R.id.textview_activitymain_selectedGasolineType);
@@ -53,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 textview_activitymain_selectedGasolineType.setText(fillingStation.getGazolineType(position).getGazoliveType());
                 order.setGazolineType(fillingStation.getGazolineType(position).getGazoliveType());
                 order.setPriceForLiter(fillingStation.getGazolineType(position).getPriceForLiter());
+                LinearLayout gridViewItem = (LinearLayout) view;
+                gridViewItem.setBackgroundColor(Color.parseColor("#0a0d13"));
+                LinearLayout backSelectedItem = (LinearLayout) gridViewGazilineType.getChildAt(backpositionGazolineType);
+                if (backpositionGazolineType != -1) {
+                    backSelectedItem.setSelected(false);
+                    backSelectedItem.setBackgroundColor(Color.parseColor("#1e3552"));
+                }
+                backpositionGazolineType = position;
             }
         });
 

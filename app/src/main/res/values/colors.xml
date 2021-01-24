@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#1e3552</color>
     <color name="colorPrimaryDark">#1e3552</color>
-    <color name="colorAccent">#1e3552</color>
-    <color name="gridView">#c0c0c0</color>
+    <color name="colorAccent">#b0b6c2</color>
+    <color name="gridView">#1e3552</color>
 
 </resources>

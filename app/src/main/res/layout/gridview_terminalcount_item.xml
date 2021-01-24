@@ -3,10 +3,11 @@
         android:id="@+id/textview_griditem_terminalcount"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background="@color/gridView"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:textSize="16sp"
+        android:background="@color/gridView"
+        android:textColor="@android:color/white"
         xmlns:android="http://schemas.android.com/apk/res/android">
 </TextView>
