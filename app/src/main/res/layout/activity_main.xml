@@ -99,8 +99,16 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"/>
         </LinearLayout>
-
+        <Button
+                android:id="@+id/button_server"
+                android:text="server"
+                android:background="@color/colorGridView"
+                android:textColor="@android:color/white"
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
     </LinearLayout>
+
 
     <Button
             android:id="@+id/button_activitymain_pay"

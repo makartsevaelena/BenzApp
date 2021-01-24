@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -41,11 +42,22 @@ public class MainActivity extends AppCompatActivity {
         setInfoAboutGazoliveValue();
         createBill();
         setBottomNavigation();
+        Button button_server = (Button) findViewById(R.id.button_server);
+        button_server.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ServerActivity.class));
+            }
+        });
 
     }
+
     protected void onResume() {
         super.onResume();
-        verifyBLEIsSupported();
+        //verifyBLEIsSupported();
+        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+            finish();
+        }
     }
 
 
