@@ -34,13 +34,7 @@
                     android:layout_height="wrap_content"
                     android:text="Выберите номер колонки:"
                     android:textStyle="bold"
-                    android:layout_weight="0.4"/>
-            <TextView
-                    android:id="@+id/textview_activitymain_selectedTerminalCount"
-                    android:textSize="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.6"/>
+                    android:layout_weight="1"/>
 
         </LinearLayout>
 
@@ -68,12 +62,7 @@
                     android:text="Выберите тип топлива:"
                     android:textStyle="bold"
                     android:layout_weight="1"/>
-            <TextView
-                    android:id="@+id/textview_activitymain_selectedGasolineType"
-                    android:textSize="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+
         </LinearLayout>
 
         <GridView

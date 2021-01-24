@@ -37,11 +37,9 @@ public class MainActivity extends AppCompatActivity {
         gridViewTerminalCount = (GridView) findViewById(R.id.gridViewTerminalCount);
         final GridViewTerminalCountsAdapter terminalCountAdapter = new GridViewTerminalCountsAdapter(getApplicationContext(), fillingStation.getTerminalCounts());
         gridViewTerminalCount.setAdapter(terminalCountAdapter);
-        textview_activitymain_selectedTerminalCount = (TextView) findViewById(R.id.textview_activitymain_selectedTerminalCount);
         gridViewTerminalCount.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                textview_activitymain_selectedTerminalCount.setText(fillingStation.getTerminalCount(position));
                 order.setTerminalCount(fillingStation.getTerminalCount(position));
                 TextView gridViewItem = (TextView) view;
                 gridViewItem.setBackgroundColor(Color.parseColor("#0a0d13"));
@@ -58,11 +56,9 @@ public class MainActivity extends AppCompatActivity {
         final GridView gridViewGazilineType = (GridView) findViewById(R.id.gridViewGazolineType);
         GridViewGazolineTypesAdapter gazolineTypeAdapter = new GridViewGazolineTypesAdapter(getApplicationContext(), fillingStation.getGazolineTypes());
         gridViewGazilineType.setAdapter(gazolineTypeAdapter);
-        textview_activitymain_selectedGasolineType = (TextView) findViewById(R.id.textview_activitymain_selectedGasolineType);
         gridViewGazilineType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                textview_activitymain_selectedGasolineType.setText(fillingStation.getGazolineType(position).getGazoliveType());
                 order.setGazolineType(fillingStation.getGazolineType(position).getGazoliveType());
                 order.setPriceForLiter(fillingStation.getGazolineType(position).getPriceForLiter());
                 LinearLayout gridViewItem = (LinearLayout) view;
