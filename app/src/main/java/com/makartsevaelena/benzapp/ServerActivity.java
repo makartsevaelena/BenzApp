@@ -1,10 +1,7 @@
 package com.makartsevaelena.benzapp;
 
 import android.bluetooth.*;
-import android.bluetooth.le.AdvertiseCallback;
-import android.bluetooth.le.AdvertiseData;
-import android.bluetooth.le.AdvertiseSettings;
-import android.bluetooth.le.BluetoothLeAdvertiser;
+import android.bluetooth.le.*;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -28,6 +25,7 @@ public class ServerActivity extends AppCompatActivity {
     private BluetoothGattServer mGattServer;
     private List<BluetoothDevice> mDevices;
     TextView server_device_info_text_view;
+    private BluetoothLeScanner mBluetoothScanner;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +33,7 @@ public class ServerActivity extends AppCompatActivity {
 
         mBluetoothManager = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE);
         mBluetoothAdapter = mBluetoothManager.getAdapter();
+        mBluetoothScanner = mBluetoothAdapter.getBluetoothLeScanner();
         server_device_info_text_view = (TextView)findViewById(R.id.server_device_info_text_view);
         Button restart_server_button = (Button) findViewById(R.id.restart_server_button);
         restart_server_button.setOnClickListener(new View.OnClickListener() {

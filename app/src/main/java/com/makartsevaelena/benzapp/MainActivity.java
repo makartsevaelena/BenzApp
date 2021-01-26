@@ -1,13 +1,14 @@
 package com.makartsevaelena.benzapp;
 
+import android.Manifest;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
+    private static final String TAG = "MailActivity";
     GridView gridViewTerminalCount;
     FillingStation fillingStation;
     ArrayList<String> spinnerArray;
@@ -27,7 +29,7 @@ public class MainActivity extends Activity {
     int maxGazolineValue = 100;
     int backpositionTerminalCount = -1;
     int backpositionGazolineType = -1;
-    final int REQUEST_ENABLE_BT = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +50,6 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(getApplicationContext(), ServerActivity.class));
             }
         });
-
-    }
-
-    protected void onResume() {
-        super.onResume();
     }
 
     private void setBottomNavigation() {
