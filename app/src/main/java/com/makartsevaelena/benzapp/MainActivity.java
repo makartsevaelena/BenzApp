@@ -1,5 +1,6 @@
 package com.makartsevaelena.benzapp;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
@@ -12,13 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.app.AlertDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     GridView gridViewTerminalCount;
     FillingStation fillingStation;
     ArrayList<String> spinnerArray;
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        verifyBLEIsSupported();
 
         fillingStation = new FillingStation();
         order = new Order();
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         button_server.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ServerActivity.class));
+                startActivity(new Intent(getApplicationContext(), ServerActivity.class));
             }
         });
 
@@ -54,24 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-        //verifyBLEIsSupported();
-        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
-            finish();
-        }
-    }
-
-
-    private void verifyBLEIsSupported() {
-        // Initializes Bluetooth adapter.
-        final BluetoothManager bluetoothManager =
-                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-        BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
-        // Ensures Bluetooth is available on the device and it is enabled. If not,
-        // displays a dialog requesting user permission to enable Bluetooth.
-        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-        }
     }
 
     private void setBottomNavigation() {
@@ -116,16 +97,35 @@ public class MainActivity extends AppCompatActivity {
                     toast.show();
                 } else {
                     order.setSumPrice(order.getGazolinaValue() * order.getPriceForLiter());
-                    FragmentManager manager = getSupportFragmentManager();
-                    PayDialogFragment payDialogFragment = new PayDialogFragment(order);
-                    payDialogFragment.show(manager, "payDialog");
+                    watchSumBill();
+
+
                 }
             }
         });
     }
 
+    private void watchSumBill() {
+        View view = getLayoutInflater().inflate(R.layout.layout_bill, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(view);
+        TextView textView_bill_orderId = (TextView) view.findViewById(R.id.textview_bill_orderid);
+        TextView textView_bill_terminalCount = (TextView) view.findViewById(R.id.textview_bill_terminalcount);
+        TextView textView_bill_gazolineType = (TextView) view.findViewById(R.id.textview_bill_gazolinetype);
+        TextView textView_bill_priceForLiter = (TextView) view.findViewById(R.id.textview_bill_priceforliter);
+        TextView textView_bill_gazolineValue = (TextView) view.findViewById(R.id.textView_bill_gazolineValue);
+        TextView textView_bill_sumprice = (TextView) view.findViewById(R.id.textview_bill_sumprice);
+        textView_bill_orderId.setText(String.valueOf(order.getOrderId()));
+        textView_bill_terminalCount.setText(order.getTerminalCount());
+        textView_bill_gazolineType.setText(order.getGazolineType());
+        textView_bill_priceForLiter.setText(order.getPriceForLiter() + " " + order.getCurrency());
+        textView_bill_gazolineValue.setText(String.valueOf(order.getGazolinaValue()));
+        textView_bill_sumprice.setText(order.getSumPrice() + " " + order.getCurrency());
+        builder.show();
+    }
+
     private void setInfoAboutGazoliveValue() {
-        Spinner spinner = findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinnerArray = new ArrayList<String>();
         for (int j = 10; j < maxGazolineValue; j++) {
             spinnerArray.add(String.valueOf(j));

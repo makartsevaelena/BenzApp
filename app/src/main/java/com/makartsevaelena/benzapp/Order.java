@@ -1,12 +1,11 @@
 package com.makartsevaelena.benzapp;
 
 public class Order {
-    private String gazolineType, terminalCount, currency;
+    private String gazolineType, terminalCount, currency = "rub";
     private double priceForLiter, sumPrice;
-    private int gazolinaValue, orderId;
+    private int gazolinaValue, orderId = 123456;
 
     public Order(int orderId,String gazolineType, String terminalCount, double priceForLiter, int gazolinaValue, double sumPrice) {
-        this.currency = "rub";
         this.orderId = orderId;
         this.gazolineType = gazolineType;
         this.terminalCount = terminalCount;
@@ -16,8 +15,6 @@ public class Order {
     }
 
     public Order(String gazolineType, String terminalCount, double priceForLiter, int gazolinaValue) {
-        orderId = 123456;
-        currency = "rub";
         this.gazolineType = gazolineType;
         this.terminalCount = terminalCount;
         this.priceForLiter = priceForLiter;
@@ -25,7 +22,6 @@ public class Order {
         this.sumPrice = priceForLiter * gazolinaValue;
     }
     public Order(){
-        currency = "rub";
     }
 
     public int getGazolinaValue() {

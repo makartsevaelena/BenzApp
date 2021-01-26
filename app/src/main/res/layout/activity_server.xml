@@ -19,12 +19,6 @@
             android:textAlignment="center"/>
 
     <Button
-            android:id="@+id/send_timestamp_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="send_timestamp"/>
-
-    <Button
             android:id="@+id/restart_server_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
