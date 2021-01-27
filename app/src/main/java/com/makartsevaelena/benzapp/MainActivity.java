@@ -1,13 +1,18 @@
 package com.makartsevaelena.benzapp;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -16,11 +21,15 @@ import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import org.altbeacon.beacon.BeaconManager;
 
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     private static final String TAG = "MailActivity";
+    private static final int REQUEST_ENABLE_BT = 1;
+    private static final int PERMISSION_REQUEST_FINE_LOCATION = 1;
+    private static final int PERMISSION_REQUEST_BACKGROUND_LOCATION = 2;
     GridView gridViewTerminalCount;
     FillingStation fillingStation;
     ArrayList<String> spinnerArray;
@@ -29,12 +38,22 @@ public class MainActivity extends Activity {
     int maxGazolineValue = 100;
     int backpositionTerminalCount = -1;
     int backpositionGazolineType = -1;
+    private LocationManager locationManager;
+    private BluetoothManager bluetoothManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        verifyBluetooth();
+        requestLocationPermission();
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            requestGpsStatus();
+        }
+        bluetoothManager = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE);
 
         fillingStation = new FillingStation();
         order = new Order();
@@ -43,14 +62,176 @@ public class MainActivity extends Activity {
         setInfoAboutGazoliveValue();
         createBill();
         setBottomNavigation();
-        Button button_server = (Button) findViewById(R.id.button_server);
-        button_server.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ServerActivity.class));
-            }
-        });
+//        Button button_server = (Button) findViewById(R.id.button_server);
+//        button_server.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(), ServerActivity.class));
+//            }
+//        });
     }
+
+    private void verifyBluetooth() {
+        try {
+            if (!BeaconManager.getInstanceForApplication(this).checkAvailability()) {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                Log.d(TAG, "Requested user enables Bluetooth. Try starting the scan again.");
+            }
+        } catch (RuntimeException e) {
+            final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+            builder.setTitle("Bluetooth LE not available");
+            builder.setMessage("Sorry, this device does not support Bluetooth LE.");
+            builder.setPositiveButton(android.R.string.ok, null);
+            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    //finish();
+                    //System.exit(0);
+                }
+
+            });
+            builder.show();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private void requestGpsStatus() {
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            new android.app.AlertDialog.Builder(MainActivity.this)
+                    .setMessage("GPS Enable")
+                    .setPositiveButton("Settings", new
+                            DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                                    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                                }
+                            })
+                    .setNegativeButton("Cancel", null)
+                    .show();
+        }
+    }
+
+
+    private boolean hasLocationPermissions() {
+        return checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestLocationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    if (this.checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        if (!this.shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
+                            final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+                            builder.setTitle("This app needs background location access");
+                            builder.setMessage("Please grant location access so this app can detect beacons in the background.");
+                            builder.setPositiveButton(android.R.string.ok, null);
+                            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                                @TargetApi(21)
+                                @Override
+                                public void onDismiss(DialogInterface dialog) {
+                                    requestPermissions(new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION},
+                                            PERMISSION_REQUEST_BACKGROUND_LOCATION);
+                                }
+
+                            });
+                            builder.show();
+                        } else {
+                            final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+                            builder.setTitle("Functionality limited");
+                            builder.setMessage("Since background location access has not been granted, this app will not be able to discover beacons in the background.  Please go to Settings -> Applications -> Permissions and grant background location access to this app.");
+                            builder.setPositiveButton(android.R.string.ok, null);
+                            builder.setNeutralButton("try again", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                                                    Manifest.permission.ACCESS_BACKGROUND_LOCATION},
+                                            PERMISSION_REQUEST_FINE_LOCATION);
+                                }
+                            });
+                            builder.show();
+                        }
+                    }
+                }
+            } else {
+                if (!this.shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                                    Manifest.permission.ACCESS_BACKGROUND_LOCATION},
+                            PERMISSION_REQUEST_FINE_LOCATION);
+                } else {
+                    final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+                    builder.setTitle("Functionality limited");
+                    builder.setMessage("Since location access has not been granted, this app will not be able to discover beacons.  Please go to Settings -> Applications -> Permissions and grant location access to this app.");
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    builder.setNeutralButton("try again", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                                            Manifest.permission.ACCESS_BACKGROUND_LOCATION},
+                                    PERMISSION_REQUEST_FINE_LOCATION);
+                        }
+                    });
+                    builder.show();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_FINE_LOCATION: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "fine location permission granted");
+                } else {
+                    final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+                    builder.setTitle("Functionality limited");
+                    builder.setMessage("Since location access has not been granted, this app will not be able to discover beacons.");
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                        }
+
+                    });
+                    builder.show();
+                }
+                return;
+            }
+            case PERMISSION_REQUEST_BACKGROUND_LOCATION: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "background location permission granted");
+                } else {
+                    final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+                    builder.setTitle("Functionality limited");
+                    builder.setMessage("Since background location access has not been granted, this app will not be able to discover beacons when in the background.");
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    builder.setNeutralButton("try again", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                                            Manifest.permission.ACCESS_BACKGROUND_LOCATION},
+                                    PERMISSION_REQUEST_FINE_LOCATION);
+                        }
+                    });
+                    builder.show();
+                }
+                return;
+            }
+        }
+    }
+
 
     private void setBottomNavigation() {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
